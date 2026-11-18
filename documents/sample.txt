@@ -1,0 +1,9 @@
+Our company works on software development and artificial intelligence projects.
+
+The company uses technologies such as Python, FastAPI, machine learning, generative AI, cloud computing, and database technologies.
+
+Employees can work on AI applications, backend development, machine learning projects, and generative AI solutions.
+
+The company encourages employees to learn new technologies and build small practical projects to improve their technical skills.
+
+The company also supports research and development in artificial intelligence and modern software technologies.

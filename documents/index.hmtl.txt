@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Amma 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ffe8cc,#ffd6e8);
+  overflow-y:auto;
+}
+.container{
+  max-width:420px;
+  margin:40px auto;
+  padding:28px;
+  background:#fff;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+.hidden{display:none}
+
+h1,h2,h3{color:#d6336c}
+.btn{
+  padding:14px 26px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  margin:10px;
+}
+.primary{background:#d6336c;color:#fff}
+.secondary{background:#ffe3ec}
+
+/* gentle hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:fall linear forwards;
+}
+@keyframes fall{to{transform:translateY(110vh);opacity:0}}
+
+.photo{
+  width:100%;
+  border-radius:20px;
+  margin-top:20px;
+  display:none;
+  animation:fadeIn 3s ease forwards;
+}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+
+@media (prefers-color-scheme: dark){
+ body{background:linear-gradient(135deg,#402218,#6b2737)}
+ .container{background:rgba(255,255,255,0.12);color:#fff}
+ h1,h2,h3{color:#ffd6e8}
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="container" id="lock">
+  <h2>🔐 Only for My Amma 🤍</h2>
+  <p>Open this when you need a smile…</p>
+  <button class="btn primary" onclick="startJourney()">🌸 Open</button>
+</div>
+
+<!-- JOURNEY -->
+<div class="container hidden" id="journey">
+  <h1>Amma 💕</h1>
+  <p id="story">This is just a small page… but it carries my whole heart.</p>
+
+  <div id="controls" class="hidden">
+    <button class="btn secondary" onclick="nextStory()">💌 Continue</button>
+  </div>
+
+  <div id="gratitude" class="hidden">
+    <h2>🌷 Thank You, Amma</h2>
+    <p style="font-size:16px">
+      For every sacrifice you never spoke about,<br>
+      every prayer you whispered for me,<br>
+      every time you stayed strong so I could grow.<br><br>
+      Your love is my strength, my safety, my forever.
+    </p>
+    <button class="btn primary" onclick="showPhoto()">🤍 I Love You Amma</button>
+  </div>
+
+  <!-- FINAL PHOTO -->
+  <img src="mother.jpg" id="photo" class="photo" alt="My Amma">
+
+  <p id="ending" class="hidden" style="font-style:italic;margin-top:18px">
+    No matter how far I go,<br>
+    I carry you in everything I am.<br><br>
+    Forever your child,<br><b>Keerthi 🌸</b>
+  </p>
+</div>
+
+<script>
+const storyLines = [
+  'You held my hand before I knew how to walk… 🤍',
+  'You believed in me even when I doubted myself 🌷',
+  'Your love never asked for anything in return ✨',
+  'Everything I am today begins with you, Amma 💖'
+];
+let index = 0;
+
+function startJourney(){
+  document.getElementById('lock').style.display='none';
+  document.getElementById('journey').classList.remove('hidden');
+  heartFall();
+  setTimeout(()=>{
+    document.getElementById('controls').classList.remove('hidden');
+  },3000);
+}
+
+function nextStory(){
+  if(index < storyLines.length){
+    document.getElementById('story').innerText = storyLines[index];
+    index++;
+  }
+  if(index === storyLines.length){
+    document.getElementById('controls').style.display='none';
+    document.getElementById('gratitude').classList.remove('hidden');
+  }
+}
+
+function showPhoto(){
+  setTimeout(()=>{
+    document.getElementById('photo').style.display='block';
+    document.getElementById('ending').classList.remove('hidden');
+  },1500);
+}
+
+function heartFall(){
+  setInterval(()=>{
+    const h=document.createElement('div');
+    h.className='heart';
+    h.innerHTML='🌸';
+    h.style.left=Math.random()*100+'vw';
+    h.style.animationDuration=6+Math.random()*4+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),10000);
+  },800);
+}
+</script>
+</body>
+</html>
